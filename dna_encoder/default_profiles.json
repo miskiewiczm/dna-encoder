@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "DNA Generator Validation Profiles - User-editable configuration",
+
+  "profiles": {
+    "pcr_friendly": {
+      "description": "Profil ukierunkowany na generowanie długich sekwencji nadających się do PCR. Zostawia aktywne wszystkie kluczowe sprawdzenia, ale stosuje umiarkowanie szerokie progi.",
+      "rules": {
+        "gc_content": true,
+        "melting_temperature": true,
+        "hairpin_structures": true,
+        "homodimer_structures": true,
+        "homopolymer_runs": true,
+        "dinucleotide_repeats": true,
+        "three_prime_stability": true
+      },
+      "params": {
+        "min_gc": 0.40,
+        "max_gc": 0.60,
+        "min_tm": 54.0,
+        "max_tm": 66.0,
+        "max_hairpin_tm": 32.0,
+        "max_homodimer_tm": 32.0,
+        "max_homopolymer_length": 4,
+        "max_dinucleotide_repeats": 3,
+        "max_3prime_gc": 4
+      }
+    },
+
+    "strict": {
+      "description": "Strict quality constraints for high-quality sequences",
+      "rules": {
+        "gc_content": true,
+        "melting_temperature": true,
+        "hairpin_structures": true,
+        "homodimer_structures": true,
+        "homopolymer_runs": true,
+        "dinucleotide_repeats": true,
+        "three_prime_stability": true
+      },
+      "params": {
+        "min_gc": 0.45,
+        "max_gc": 0.55,
+        "min_tm": 57.0,
+        "max_tm": 63.0,
+        "max_hairpin_tm": 25.0,
+        "max_homodimer_tm": 25.0,
+        "max_homopolymer_length": 3,
+        "max_dinucleotide_repeats": 2,
+        "max_3prime_gc": 3
+      }
+    },
+
+    "relaxed": {
+      "description": "Relaxed constraints for general-purpose use",
+      "rules": {
+        "gc_content": true,
+        "melting_temperature": true,
+        "hairpin_structures": true,
+        "homodimer_structures": true,
+        "homopolymer_runs": true,
+        "dinucleotide_repeats": true,
+        "three_prime_stability": true
+      },
+      "params": {
+        "min_gc": 0.40,
+        "max_gc": 0.60,
+        "min_tm": 52.0,
+        "max_tm": 68.0,
+        "max_hairpin_tm": 32.0,
+        "max_homodimer_tm": 32.0,
+        "max_homopolymer_length": 4,
+        "max_dinucleotide_repeats": 3,
+        "max_3prime_gc": 4
+      }
+    },
+
+    "sequence_only": {
+      "description": "Only basic sequence quality checks (no thermodynamic validation)",
+      "rules": {
+        "gc_content": false,
+        "melting_temperature": false,
+        "hairpin_structures": false,
+        "homodimer_structures": false,
+        "homopolymer_runs": true,
+        "dinucleotide_repeats": true,
+        "three_prime_stability": true
+      },
+      "params": {
+        "max_homopolymer_length": 4,
+        "max_dinucleotide_repeats": 2,
+        "max_3prime_gc": 3
+      }
+    },
+
+    "primer3": {
+      "description": "Validation profile matching Primer3 default settings (GC 30-70%, Tm 57-62°C, hairpin ≤24°C)",
+      "rules": {
+        "gc_content": true,
+        "melting_temperature": true,
+        "hairpin_structures": true,
+        "homodimer_structures": true,
+        "homopolymer_runs": true,
+        "dinucleotide_repeats": true,
+        "three_prime_stability": true
+      },
+      "params": {
+        "min_gc": 0.30,
+        "max_gc": 0.70,
+        "min_tm": 57.0,
+        "max_tm": 62.0,
+        "max_hairpin_tm": 24.0,
+        "max_homodimer_tm": 35.0,
+        "max_homopolymer_length": 4,
+        "max_dinucleotide_repeats": 3,
+        "max_3prime_gc": 5
+      }
+    },
+
+    "none": {
+      "description": "No validation rules - completely random generation",
+      "rules": {
+        "gc_content": false,
+        "melting_temperature": false,
+        "hairpin_structures": false,
+        "homodimer_structures": false,
+        "homopolymer_runs": false,
+        "dinucleotide_repeats": false,
+        "three_prime_stability": false
+      },
+      "params": {
+        "min_gc": 0.0,
+        "max_gc": 1.0,
+        "min_tm": 0.0,
+        "max_tm": 200.0,
+        "max_hairpin_tm": 200.0,
+        "max_homodimer_tm": 200.0,
+        "max_homopolymer_length": 999,
+        "max_dinucleotide_repeats": 999,
+        "max_3prime_gc": 5
+      }
+    }
+  },
+
+  "_metadata": {
+    "version": "1.0",
+    "last_modified": "2025-10-23",
+    "instructions": "Add your custom profiles here. Each profile must have 'description', 'rules', and 'params' sections. Available rules: gc_content, melting_temperature, hairpin_structures, homodimer_structures, homopolymer_runs, dinucleotide_repeats, three_prime_stability"
+  }
+}
