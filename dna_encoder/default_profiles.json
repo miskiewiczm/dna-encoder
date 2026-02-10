@@ -4,7 +4,7 @@
 
   "profiles": {
     "pcr_friendly": {
-      "description": "Profil ukierunkowany na generowanie długich sekwencji nadających się do PCR. Zostawia aktywne wszystkie kluczowe sprawdzenia, ale stosuje umiarkowanie szerokie progi.",
+      "description": "Profile optimized for generating long PCR-compatible sequences. Keeps all key validations active with moderately wide thresholds.",
       "rules": {
         "gc_content": true,
         "melting_temperature": true,
